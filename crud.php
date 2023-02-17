@@ -1,3 +1,37 @@
+<?php
+//закрываем доступ с помощью этого скрипта не зарегистрированным пользователем
+
+$login = $_COOKIE['login'];
+$token = $_COOKIE['token'];
+
+password_verify($password, $userPassword);
+
+include_once 'connection/connectMySql.php';
+
+$sql = "SELECT * FROM `users` WHERE `login` = '$login'";
+
+    if($result = $mysql->query($sql)) {
+
+    foreach($result as $row) {
+
+    $userLogin = $row["login"];
+    $userToken = $row["token"];
+
+    }
+
+    //делаем проверку с хешем
+    if (!password_verify($userToken, $token)) {
+        if($login != $userLogin || $token != $userToken) {
+            exit('вы не зарегистрированы');
+        }
+        else if(empty($login) || empty($login)) {
+            exit('вы не зарегистрированы');
+        }
+     
+    }
+}
+?>
+
 <!doctype html>
 <html lang="ru">
 <head>
