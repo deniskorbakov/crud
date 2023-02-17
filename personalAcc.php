@@ -62,15 +62,15 @@ $sql = "SELECT * FROM `users` WHERE `login` = '$login'";
                         </div>
 
                         <div class="modal-body">
-                            <form action="send_password.php" method="post">
+                            <form action="backend/send_password.php" method="post">
                                 <div class="form-group col-md-8 m-2 mx-auto">
                                     <label>Введите старый пароль</label>
-                                    <input name="old_password_input" type="password" class="form-control">
+                                    <input name="oldPassword" type="password" class="form-control">
                                 </div>
             
                                 <div class="form-group col-md-8 m-2 mx-auto">
                                     <label>Введите новый пароль</label>
-                                    <input name="password1_input" type="password" class="form-control">
+                                    <input name="password" type="password" class="form-control">
                                 </div>
 
                                 <div class="modal-footer">
@@ -83,38 +83,11 @@ $sql = "SELECT * FROM `users` WHERE `login` = '$login'";
                 </div>
             </div>
             
-            <a href="#" class="nav-link px-8 link-secondary fw-bolder mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal1"><h3 class="text-danger">Изменить логин</h3></a>
-
-            <!-- изменить логин -->
-            <div class="mt-2 modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel1">Сброс пароля</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-
-                        <div class="modal-body">
-                            <form action="send_password.php" method="post">
-
-                                <div class="form-group col-md-8 m-2 mx-auto">
-                                    <label>Введите новый логин</label>
-                                    <input name="password2_input" type="password" class="form-control">
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Выйти</button>
-                                    <button type="submit" class="btn btn-success">Отправить</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <form action="backend/exit.php" method="POST">
-                    <input type="submit" name="appetizer_button" value="Выйти" class="mt-5 btn btn-danger">
+                    <input type="submit" name="appetizer_button" value="Выйти из аккаунта" class="mt-2 btn btn-danger">
             </form>
+
+            <a class="btn btn-success mt-5" href="crud.php">Выйти в crud</a>
         </div>
     </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
