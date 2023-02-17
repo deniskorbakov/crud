@@ -22,7 +22,8 @@
                 <form class="mt-5" action="backend/authorizationBack.php" method="post">
                     <input class="form-control p-2" name="login" type="text" placeholder="Введите логин">
                     <input class="form-control p-2 mt-4" name="password" type="password" placeholder="Введите пароль">
-                    <button class="btn btn-success mt-4" type="submit">Авторизироваться</button>
+                    <button class="btn btn-success p-2 mt-4" type="submit">Авторизироваться</button>
+                    <a href="index.php" class="btn btn-danger p-2 mt-4 ml-4">Перейти на регистрацию</a>
                 </form>
             </div>
         </div>
