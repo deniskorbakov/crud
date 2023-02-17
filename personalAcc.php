@@ -46,7 +46,7 @@ $sql = "SELECT * FROM `users` WHERE `login` = '$login'";
     <main>
         <div class="container mt-5">
             <h1 class="text-center text-white">Кабинет пользователя</h1>
-
+            <i class="fa-solid fa-user"></i>
             <h3 class="mt-5 text-white">Имя пользователя: <?php echo $_COOKIE["login"];?></h3>
 
             
