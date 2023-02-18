@@ -74,10 +74,62 @@ include_once 'crudFunction/functions.php';
                                     <td><?php echo $row['email'];?></td>
                                     <td><?php echo $row['password'];?></td>
                                     <td>
-                                        <a href="" class="btn btn-success"><i class="fa-solid fa-edit"></i></a>
-                                        <a href="" class="btn btn-danger"><i class="fa-solid fa-trash-alt"></i></a>
+                                        <a href="?id=<?php echo $row['id'];?>" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#edit<?php echo $row['id'];?>"><i class="fa-solid fa-edit"></i></a>
+                                        <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?php echo $row['id'];?>"><i class="fa-solid fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
+
+                                <!-- Модальное edit -->
+                                <div class="modal fade" id="edit<?php echo $row['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Изменить запись</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="?id=<?php echo $row['id'];?>" method="post">
+                                            <div class="form-group">
+                                                <small>Имя</small>
+                                                <input type="text" class="form-control" name="name" value="<?php echo $row['name'];?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <small>Почта</small>
+                                                <input type="text" class="form-control" name="email" value="<?php echo $row['email'];?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <small>Пароль</small>
+                                                <input type="text" class="form-control" name="password" value="<?php echo $row['password'];?>">
+                                            </div>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+                                            <button type="submit" class="btn btn-success" name="edit">Сохранить</button>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <!-- Модальное delete -->
+                                <div class="modal fade" id="delete<?php echo $row['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Удалить запись №<?php echo $row['id'];?></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                                    </div>
+                            
+                                    <div class="modal-footer">
+                                        <form action="?id=<?php echo $row['id'];?>" method="post">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+                                            <button type="submit" class="btn btn-danger" name="delete">Удалить</button>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
                                 <?php } ?>
                             </tbody>
                         </table>
