@@ -4,8 +4,6 @@
 $login = $_COOKIE['login'];
 $token = $_COOKIE['token'];
 
-password_verify($password, $userPassword);
-
 include_once 'connection/connectMySql.php';
 
 $sql = "SELECT * FROM `users` WHERE `login` = '$login'";
@@ -29,7 +27,10 @@ $sql = "SELECT * FROM `users` WHERE `login` = '$login'";
         }
      
     }
+
 }
+
+include_once 'crudFunction/functions.php';
 ?>
 
 <!doctype html>
@@ -52,7 +53,7 @@ $sql = "SELECT * FROM `users` WHERE `login` = '$login'";
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-12">
-                        <button class="btn btn-success mt-5"><i class="fa-solid fa-plus"></i></button>
+                        <button class="btn btn-success mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i></button>
                         <table class="table table-dark table-striped table-hover mt-2">
                             <thead class="thead-dark">
                                 <th>ID</th>
@@ -64,28 +65,24 @@ $sql = "SELECT * FROM `users` WHERE `login` = '$login'";
                                 <th>Action</th>
                             </thead>
                             <tbody>
+                                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                                 <tr>
-                                    <td>sadasd</td>
-                                    <td>asdasd</td>
-                                    <td>asdasd</td>
-                                    <td>asdasd</td>
-                                    <td>asdasd</td>
-                                    <td>asdasd</td>
+                                    <td><?php echo $row['id'];?></td>
+                                    <td><?php echo $row['created_at'];?></td>
+                                    <td><?php echo $row['updated_at'];?></td>
+                                    <td><?php echo $row['name'];?></td>
+                                    <td><?php echo $row['email'];?></td>
+                                    <td><?php echo $row['password'];?></td>
                                     <td>
                                         <a href="" class="btn btn-success"><i class="fa-solid fa-edit"></i></a>
                                         <a href="" class="btn btn-danger"><i class="fa-solid fa-trash-alt"></i></a>
-                                        <a href="" class="btn btn-success"><i class="fa-solid fa-edit"></i></a>
                                     </td>
                                 </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
-
-                <!-- Кнопка-триггер модального окна -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Добавить запись
-                </button>
 
                 <!-- Модальное окно -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -96,13 +93,25 @@ $sql = "SELECT * FROM `users` WHERE `login` = '$login'";
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="">
-                            
-                        </form>
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <small>Имя</small>
+                                <input type="text" class="form-control" name="name">
+                            </div>
+                            <div class="form-group">
+                                <small>Почта</small>
+                                <input type="text" class="form-control" name="email">
+                            </div>
+                            <div class="form-group">
+                                <small>Пароль</small>
+                                <input type="text" class="form-control" name="password">
+                            </div>
+                        
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                        <button type="submit" class="btn btn-primary" name="add">Сохранить</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-success" name="add">Сохранить</button>
+                        </form>
                     </div>
                     </div>
                 </div>

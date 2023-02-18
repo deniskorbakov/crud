@@ -4,8 +4,6 @@
 $login = $_COOKIE['login'];
 $token = $_COOKIE['token'];
 
-password_verify($password, $userPassword);
-
 include_once 'connection/connectMySql.php';
 
 $sql = "SELECT * FROM `users` WHERE `login` = '$login'";
