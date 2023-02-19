@@ -5,7 +5,7 @@ $password = $_POST['password'];
 
 include_once '../connection/connectMySql.php';
 
-//проверка правильности данных
+//проверка правильности данных только на латыне
 if(preg_match('/[А-Я а-яЁё.,]/u', $login)) {
   echo "<h3>Логин - введен не коректно: не должно быть - пробелов, русских символов, точек, запятых</h3>" . header("refresh:3;url=../index.php");
 }

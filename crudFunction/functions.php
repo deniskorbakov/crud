@@ -6,11 +6,13 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
+//получаем айди для работы с полем по айди
 $get_id = $_GET['id'];
 
 $login = $_COOKIE['login'];
 $token = '';
 
+//получаем токен, для дальнейшего взаимодествия с каждым пользователем
 $sql = "SELECT * FROM `users` WHERE `login` = '$login'";
 
     if($result = $mysql->query($sql)) {
@@ -22,7 +24,6 @@ $sql = "SELECT * FROM `users` WHERE `login` = '$login'";
         $token = $userToken;        
     }
 
-var_dump($token);
 //read users
 $result = $mysql->query("SELECT * FROM `crudUsers` WHERE `flag` = '0' AND `token` = '$token'");
 
