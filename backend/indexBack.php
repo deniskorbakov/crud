@@ -46,7 +46,7 @@ else{
         $permitted_chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $token = substr(str_shuffle($permitted_chars), 0, 10);
 
-        $mysql->query("INSERT INTO `users` (`login`,`password`,`token`) VALUES ('$login','$password','$token')");
+        $mysql->query("INSERT INTO `users` (`login`,`password`,`token`,`flag`) VALUES ('$login','$password','$token','0')");
         $mysql->close();
 
         header("Refresh:0; url=../authorization.php");
