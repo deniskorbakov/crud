@@ -20,6 +20,7 @@ if($result = $mysql->query($sql)){
     $userPassword = $row["password"]; 
     $userToken = $row["token"];
     }
+
     if(empty($userToken)) {
         echo "<h3>Вы не зарегистрированы</h3>".header("refresh:3;url=../authorization.php");
     }

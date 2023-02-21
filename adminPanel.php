@@ -86,12 +86,12 @@ include_once 'adminFunction/adminFunction.php';
                                         <form action="?id=<?php echo $row['id'];?>" method="post">
                                             <div class="form-group">
                                                 <small>Имя</small>
-                                                <input type="text" class="form-control" name="login" value="<?php echo $row['name'];?>">
+                                                <input type="text" class="form-control" name="login" value="<?php echo $row['login'];?>">
                                             </div>
 
                                             <div class="form-group">
                                                 <small>Пароль</small>
-                                                <input type="text" class="form-control" name="password" value="<?php echo $row['password'];?>">
+                                                <input type="text" class="form-control" name="password">
                                             </div>
                                         
                                     </div>
