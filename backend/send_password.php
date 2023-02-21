@@ -8,6 +8,12 @@ $login = $_COOKIE["login"];
 if(preg_match('/[А-Я а-яЁё]/u', $password)) {
     echo "<h3>Пароль - введен не коректно: не должно быть - пробелов, русских символов</h3>" . header("refresh:3;url=../personalAcc.php");
 }
+else if(empty($password)) {
+    echo "<h3>Пустоя строка нового пароля</h3>" . header("refresh:3;url=../personalAdmin.php");
+}
+else if(strlen($password) < 8 || strlen($password) > 20) {
+    echo "<h3>Короткий пароль, должен быть не менее 8 символов и не больше 20 символов!</h3>" . header("refresh:3;url=../personalAdmin.php");
+}
     else {
     include_once '../connection/connectMySql.php';
 
