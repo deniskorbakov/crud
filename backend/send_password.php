@@ -14,6 +14,9 @@ else if(empty($password)) {
 else if(strlen($password) < 8 || strlen($password) > 20) {
     echo "<h3>Короткий пароль, должен быть не менее 8 символов и не больше 20 символов!</h3>" . header("refresh:3;url=../personalAdmin.php");
 }
+else if($oldPassword == $password) {
+    echo "<h3>Новый пароль должен отличаться от старого</h3>" . header("refresh:3;url=../personalAdmin.php");
+}
     else {
     include_once '../connection/connectMySql.php';
 
