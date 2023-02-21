@@ -22,7 +22,7 @@ $sql = "SELECT * FROM `users` WHERE `login` = '$login'";
         if($login != $userLogin || $token != $userToken) {
             exit('вы не зарегистрированы');
         }
-        else if(empty($login) || empty($login)) {
+        else if(empty($login) || empty($token)) {
             exit('вы не зарегистрированы');
         }
      
