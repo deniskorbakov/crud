@@ -31,8 +31,16 @@ if($result = $mysql->query($sql)){
 
             setcookie('login', $login, time() + (10 * 365 * 24 * 60 * 60), "/");
             setcookie('token', $token, time() + (10 * 365 * 24 * 60 * 60), "/");
+
+            //переадресация на админку
+            if($login == 'admin99' && password_verify($password, $userPassword)) {
+                header("Refresh:0; url=../adminPanel.php");
+            }
+            else {
+                header("Refresh:0; url=../crud.php");
+            }
             
-            header("Refresh:0; url=../crud.php");
+            
         }
         else {
             echo "<h3>Не правильный пароль</h3>".header("refresh:3;url=../authorization.php");
